@@ -362,10 +362,39 @@
 
         // অ্যাডভান্সড এডিটর একদম পারফেক্টলি ফিক্সড লাইন 🎯
         window.openAdvancedEditor = () => {
-            document.getElementById('editor-panel').style.display = 'flex';
-            document.getElementById('code-area').value = document.documentElement.outerHTML;
-            const previewDoc = document.getElementById('preview-iframe').contentDocument || document.getElementById('preview-iframe').contentWindow.document;
-            previewDoc.open(); previewDoc.write(document.getElementById('code-area').value); previewDoc.close();
-        };
 
-        
+    // 🔐 SECURITY CHECK
+    if (!auth?.currentUser) {
+        alert("Login required!");
+        return;
+    }
+
+    // ✅ ONLY YOUR GMAIL
+    if (auth.currentUser.email !== "nx84989@gmail.com") {
+        alert("Only admin can access editor!");
+        return;
+    }
+
+    const editorPanel = document.getElementById('editor-panel');
+    const codeArea = document.getElementById('code-area');
+    const iframe = document.getElementById('preview-iframe');
+
+    editorPanel.style.display = 'flex';
+
+    codeArea.value = document.documentElement.outerHTML;
+
+    const previewDoc =
+        iframe.contentDocument ||
+        iframe.contentWindow.document;
+
+    previewDoc.open();
+    previewDoc.write(codeArea.value);
+    previewDoc.close();
+
+    // ✅ LIVE PREVIEW FIX
+    codeArea.oninput = () => {
+        previewDoc.open();
+        previewDoc.write(codeArea.value);
+        previewDoc.close();
+    };
+};
