@@ -260,8 +260,19 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getDatabase, ref, set, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-        const firebaseConfig = { databaseURL: "https://linkverzz-default-rtdb.firebaseio.com/", projectId: "linkverzz" };
-        const app = initializeApp(firebaseConfig); const db = getDatabase(app);
+        const firebaseConfig = {
+  apiKey: "AIzaSyDnundYKBAfZEplB26dV8SpjuhZTjWgfMA",
+  authDomain: "linkverzz.firebaseapp.com",
+  databaseURL: "https://linkverzz-default-rtdb.firebaseio.com",
+  projectId: "linkverzz",
+  storageBucket: "linkverzz.firebasestorage.app",
+  messagingSenderId: "499413720611",
+  appId: "1:499413720611:web:2ee263263232fdfe90db96"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
         // Instantly maps local backup strings so interface never stays blank
         const defaults = [
@@ -297,7 +308,7 @@
             const rawData = snapshot.val();
             if (rawData) {
                 const firebaseLinks = Object.keys(rawData).map(key => rawData[key]);
-                renderLinks(firebaseLinks);
+                renderLinks([...defaults, ...firebaseLinks]);
             }
         });
 
