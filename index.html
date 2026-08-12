@@ -79,7 +79,29 @@
             background: var(--btn-bg); border: 1px solid var(--btn-border); border-radius: 50px;
             color: white; text-decoration: none; font-weight: 500; backdrop-filter: blur(10px); transition: 0.3s;
         }
-        .social-btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.03); box-shadow: 0 0 20px var(--btn-border); }
+                .social-btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.03); box-shadow: 0 0 20px var(--btn-border); }
+
+        .app-btn {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 100%; 
+            padding: 12px 24px;
+            margin-bottom: 20px; 
+            background: linear-gradient(90deg, var(--logo-g1), var(--logo-g2));
+            color: black; 
+            border: none; 
+            border-radius: 30px; 
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif; 
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); 
+            transition: 0.3s;
+        }
+        .app-btn:hover { 
+            transform: scale(1.03); 
+        }
+
 
         .admin-trigger {
             position: fixed; top: 20px; right: 20px; background: white; color: black; border: none;
@@ -187,8 +209,13 @@
             <img src="https://i.ibb.co.com/vvBS30v9/1778097527400.png" class="profile-img" id="displayImg">
         </div>
         <p class="user-bio" id="displayBio">Coding makes me happy :)</p>
-        
-        <div class="tabs-container">
+
+<a href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" target="_blank" class="app-btn">
+    📱 Visit App / Play Store
+</a>
+
+<div class="tabs-container">
+
             <button class="tab-btn active" id="tab-social" onclick="switchTab('social')">Social Media</button>
             <button class="tab-btn" id="tab-website" onclick="switchTab('website')">Websites</button>
         </div>
